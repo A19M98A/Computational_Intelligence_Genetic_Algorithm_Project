@@ -2,5 +2,5 @@
 
 ## TODO
 
-- [ ] Defined a Fitness function
+- [x] Defined a Fitness function
 - [ ] Defined a Chromosome (Binary)
