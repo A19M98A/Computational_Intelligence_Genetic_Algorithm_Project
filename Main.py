@@ -1,10 +1,20 @@
 import math
 
 class Chromosome:
-    pass
+    
+    def __init__(self, var_X, var_Y):
+        self.var_X = bin(var_X)
+        self.var_Y = bin(var_Y)
+    
+    def Var_X(self):
+        return int(self.var_X, 2)
 
-def Fitness(x, y):
-    ret = -20 * math.exp(-0.2 * pow((0.5 * (x * x + y * y)), 0.5)) - math.exp(0.5 * (math.cos(2 * x * math.pi) + math.cos(2 * y * math.pi))) + 2.7 + 20
+    def Var_Y(self):
+        return int(self.var_Y, 2)
+
+
+def Fitness(_chromosome):
+    ret = -20 * math.exp(-0.2 * pow((0.5 * (_chromosome.Var_X() * _chromosome.Var_X() + _chromosome.Var_Y() * _chromosome.Var_Y())), 0.5)) - math.exp(0.5 * (math.cos(2 * _chromosome.Var_X() * math.pi) + math.cos(2 * _chromosome.Var_Y() * math.pi))) + 2.7 + 20
     return ret
 
 def ParentSelection(x, y):
@@ -21,5 +31,7 @@ while 1:
     print('Crossover [1]')
     print('Survivor selection [2]')
     print('(1/0).(1/0).(1/0) ?')
-    print(Fitness(1, 2))
+    chromesimple = Chromosome(10, 10)
+    # print(chromesimple.Var_Y())
+    print(Fitness(chromesimple))
     Ans = input() 
