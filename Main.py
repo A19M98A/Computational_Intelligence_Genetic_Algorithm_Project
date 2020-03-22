@@ -17,13 +17,13 @@ def Fitness(_chromosome):
     ret = -20 * math.exp(-0.2 * pow((0.5 * (_chromosome.Var_X() * _chromosome.Var_X() + _chromosome.Var_Y() * _chromosome.Var_Y())), 0.5)) - math.exp(0.5 * (math.cos(2 * _chromosome.Var_X() * math.pi) + math.cos(2 * _chromosome.Var_Y() * math.pi))) + 2.7 + 20
     return ret
 
-def ParentSelection(x, y):
+def ParentSelection(_ch1, _ch2):
     pass
 
-def Crossover(x, y):
+def Crossover(_ch1, _ch2):
     pass
 
-def SurvivorSelection(x, y):
+zsh:1: command not found: :wq
     pass
 
 while 1:
