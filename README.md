@@ -10,4 +10,4 @@ Chromosome include 12 bit (6 bit for x, 6 bit for y)
 - [x] Fill the method of Crossover
 - [ ] Fill the method of Survivor Selection
 - [ ] Add Graphic Mode
-- [ ] fix Var_X_B() and Var_Y_B() method
+- [x] fix Var_X_B() and Var_Y_B() method

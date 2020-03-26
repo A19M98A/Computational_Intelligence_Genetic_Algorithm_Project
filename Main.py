@@ -13,10 +13,10 @@ class Chromosome:
         return int(self.var_Y, 2)
 
     def Var_X_B(self):
-        return str(self.var_X)[2:]
+        return str(self.var_X)[2:].rjust(6,'0')
 
     def Var_Y_B(self):
-        return str(self.var_Y)[2:]
+        return str(self.var_Y)[2:].rjust(6,'0')
 
 
 def Fitness(_chromosome):
@@ -48,6 +48,8 @@ while 1:
     # print(chromesimple.Var_Y())
     # print(Fitness(chromesimple))
     ch1, ch2 = Crossover(chromesimple, chromesimple2)
-    print(ch1.Var_X(), ch1.Var_Y())
-    print(ch2.Var_X(), ch2.Var_Y())
+    print(chromesimple.Var_X_B(), chromesimple.Var_Y_B())
+    print(chromesimple2.Var_X_B(), chromesimple2.Var_Y_B())
+    print(ch1.Var_X_B(), ch1.Var_Y_B())
+    print(ch2.Var_X_B(), ch2.Var_Y_B())
     Ans = input() 
