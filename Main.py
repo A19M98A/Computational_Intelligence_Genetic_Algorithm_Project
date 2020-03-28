@@ -1,5 +1,10 @@
 import math
 
+aX = -3
+bX = 3
+aY = -3
+bY = 3
+
 class Chromosome:
     
     def __init__(self, var_X, var_Y):
@@ -20,7 +25,9 @@ class Chromosome:
 
 
 def Fitness(_chromosome):
-    ret = -20 * math.exp(-0.2 * pow((0.5 * (_chromosome.Var_X() * _chromosome.Var_X() + _chromosome.Var_Y() * _chromosome.Var_Y())), 0.5)) - math.exp(0.5 * (math.cos(2 * _chromosome.Var_X() * math.pi) + math.cos(2 * _chromosome.Var_Y() * math.pi))) + 2.7 + 20
+    X = _chromosome.Var_X() * ((bX - aX) / 63) + aX
+    Y = _chromosome.Var_Y() * ((bY - aY) / 63) + aY
+    ret = -20 * math.exp(-0.2 * pow((0.5 * (X * X + Y * Y)), 0.5)) - math.exp(0.5 * (math.cos(2 * X * math.pi) + math.cos(2 * Y * math.pi))) + 2.7 + 20
     return ret
 
 def ParentSelection(_ch1, _ch2):
@@ -46,7 +53,7 @@ while 1:
     chromesimple = Chromosome(10, 1)
     chromesimple2 = Chromosome(1, 5)
     # print(chromesimple.Var_Y())
-    # print(Fitness(chromesimple))
+    print(Fitness(chromesimple))
     ch1, ch2 = Crossover(chromesimple, chromesimple2)
     print(chromesimple.Var_X_B(), chromesimple.Var_Y_B())
     print(chromesimple2.Var_X_B(), chromesimple2.Var_Y_B())
