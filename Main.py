@@ -1,4 +1,5 @@
 import math
+import random
 
 aX = -3
 bX = 3
@@ -45,6 +46,10 @@ def Crossover(_ch1, _ch2):
 def SurvivorSelection(_ch1, _ch2):
     pass
 
+croms = []
+for i in range(1000):
+    croms.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
+
 while 1:
     print('Parent selection [0]')
     print('Crossover [1]')
@@ -53,6 +58,9 @@ while 1:
     chromesimple = Chromosome(10, 1)
     chromesimple2 = Chromosome(1, 5)
     # print(chromesimple.Var_Y())
+    for c in croms:
+        print(Fitness(c))
+    print("-----------")
     print(Fitness(chromesimple))
     ch1, ch2 = Crossover(chromesimple, chromesimple2)
     print(chromesimple.Var_X_B(), chromesimple.Var_Y_B())
