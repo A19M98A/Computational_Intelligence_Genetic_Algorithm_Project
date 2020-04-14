@@ -5,6 +5,9 @@ bX = 3
 aY = -3
 bY = 3
 
+All_Ch = list()
+Parents = list()
+
 class Chromosome:
     
     def __init__(self, var_X, var_Y):
