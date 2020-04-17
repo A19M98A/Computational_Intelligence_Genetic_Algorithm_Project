@@ -34,8 +34,27 @@ def Fitness(_chromosome):
     ret = -20 * math.exp(-0.2 * pow((0.5 * (X * X + Y * Y)), 0.5)) - math.exp(0.5 * (math.cos(2 * X * math.pi) + math.cos(2 * Y * math.pi))) + 2.7 + 20
     return ret
 
-def ParentSelection(_ch1, _ch2):
-    pass
+def Sort():
+    for i in range(len(All_Ch)):
+        for j in range(i + 1, len(All_Ch)):
+            if Fitness(All_Ch[i]) > Fitness(All_Ch[j]):
+                All_Ch[i], All_Ch[j] = All_Ch[j], All_Ch[i]
+
+def ParentSelection():
+    Sort()
+    n = len(All_Ch)
+    parents = list()
+    for i in range(10):
+        Parents.append(All_Ch[random.randint(0, int(n / 2))])
+        parents.append(All_Ch[random.randint(int(n / 2), int(3 / 4 * n))])
+        parents.append(All_Ch[random.randint(int(3 / 4 * n), int(7 / 8 * n))])
+        parents.append(All_Ch[random.randint(int(7 / 8 * n), int(15 / 16 * n))])
+        parents.append(All_Ch[random.randint(int(15 / 16 * n), int(31 / 32 * n))])
+        parents.append(All_Ch[random.randint(int(31 / 32 * n), n - 1)])
+    for i in range(0, len(parents), 2):
+        ch1, ch2 = Crossover(parents[i], parents[i + 1])
+        All_Ch.append(ch1)
+        All_Ch.append(ch2)
 
 def Crossover(_ch1, _ch2):
     x1 = '0b' + _ch1.Var_X_B()[:3] + _ch2.Var_X_B()[3:]
@@ -49,25 +68,18 @@ def Crossover(_ch1, _ch2):
 def SurvivorSelection(_ch1, _ch2):
     pass
 
-croms = []
 for i in range(1000):
-    croms.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
+    All_Ch.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
 
 while 1:
     print('Parent selection [0]')
     print('Crossover [1]')
     print('Survivor selection [2]')
     print('(1/0).(1/0).(1/0) ?')
-    chromesimple = Chromosome(10, 1)
-    chromesimple2 = Chromosome(1, 5)
-    # print(chromesimple.Var_Y())
-    for c in croms:
-        print(Fitness(c))
+    ParentSelection()
+    Sort()
+    print(Fitness(All_Ch[len(All_Ch) - 1]))
+    print(All_Ch[len(All_Ch) - 1].Var_X_B())
+    print(All_Ch[len(All_Ch) - 1].Var_Y_B())
     print("-----------")
-    print(Fitness(chromesimple))
-    ch1, ch2 = Crossover(chromesimple, chromesimple2)
-    print(chromesimple.Var_X_B(), chromesimple.Var_Y_B())
-    print(chromesimple2.Var_X_B(), chromesimple2.Var_Y_B())
-    print(ch1.Var_X_B(), ch1.Var_Y_B())
-    print(ch2.Var_X_B(), ch2.Var_Y_B())
     Ans = input() 
