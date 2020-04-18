@@ -72,14 +72,6 @@ for i in range(1000):
     All_Ch.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
 
 while 1:
-    print('Parent selection [0]')
-    print('Crossover [1]')
-    print('Survivor selection [2]')
-    print('(1/0).(1/0).(1/0) ?')
     ParentSelection()
-    Sort()
-    print(Fitness(All_Ch[len(All_Ch) - 1]))
-    print(All_Ch[len(All_Ch) - 1].Var_X_B())
-    print(All_Ch[len(All_Ch) - 1].Var_Y_B())
     print("-----------")
-    Ans = input() 
+    #Ans = input() 
