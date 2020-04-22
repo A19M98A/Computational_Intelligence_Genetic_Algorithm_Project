@@ -41,7 +41,7 @@ def Sort():
         for j in range(i + 1, len(All_Ch)):
             if Fitness(All_Ch[i]) > Fitness(All_Ch[j]):
                 All_Ch[i], All_Ch[j] = All_Ch[j], All_Ch[i]
-    print(Fitness(All_Ch[len(All_Ch) - 1]))
+    # print(Fitness(All_Ch[len(All_Ch) - 1]))
 
 def Parent_Selection():
     if ch_PS == 1:
@@ -158,15 +158,15 @@ def Uniform(_ch1, _ch2):
     return ch1, ch2
 
 def SurvivorSelection():
-    surv = list()
+    global All_Ch
+    # surv = list()
     Sort()
+    All_Ch = All_Ch[-100:]
     tt = 0
     n = len(All_Ch) - 1
-    for i in range(100):
-        surv.append[All_Ch[n - i]]
+    for i in range(n):
         tt += Fitness(All_Ch[n - i])
-    All_Ch = surv
-    print(tt / (n + 1))
+    print('Average: ' + str(tt / (n + 1)) + '  Max: ' + str(Fitness(All_Ch[n])))
 
 for i in range(100):
     All_Ch.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
@@ -187,5 +187,7 @@ ch_PS = int(input())
 
 while 1:
     Parent_Selection()
+    SurvivorSelection()
     print("-----------")
+    input("continue?....")
     #Ans = input() 
