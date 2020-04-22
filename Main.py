@@ -50,8 +50,6 @@ def Parent_Selection():
        Stochastic_Universal_Sampling()
     elif ch_PS == 3:
        Tournament_Selection()
-    elif ch_PS == 4:
-       Rank_based_Selection()
 
 def Roulette_Wheel_Selection():
     Sort()
@@ -94,16 +92,16 @@ def Stochastic_Universal_Sampling():
 
 def Tournament_Selection():
     Sort()
-    n = len(All_Ch)
+    n = len(All_Ch) - 1
     parents = list()
     for i in range(2):
         a = list()
-        a[1] = All_Ch[random.randint(0, n)]
-        a[2] = All_Ch[random.randint(0, n)]
-        a[3] = All_Ch[random.randint(0, n)]
-        a[4] = All_Ch[random.randint(0, n)]
-        a[5] = All_Ch[random.randint(0, n)]
-        a[6] = All_Ch[random.randint(0, n)]
+        a.append(All_Ch[random.randint(0, n)])
+        a.append(All_Ch[random.randint(0, n)])
+        a.append(All_Ch[random.randint(0, n)])
+        a.append(All_Ch[random.randint(0, n)])
+        a.append(All_Ch[random.randint(0, n)])
+        a.append(All_Ch[random.randint(0, n)])
         _max = a[1]
         for p in a:
             if Fitness(p) > Fitness(_max):
@@ -115,8 +113,6 @@ def Tournament_Selection():
         All_Ch.append(ch1)
         All_Ch.append(ch2)
 
-def Rank_based_Selection():
-    pass
 
 def Crossover(_ch1, _ch2):
     if ch_C == 1:
@@ -161,11 +157,33 @@ def Uniform(_ch1, _ch2):
     ch2 = Chromosome(int(x2, 2), int(y2, 2))
     return ch1, ch2
 
-def SurvivorSelection(_ch1, _ch2):
-    pass
+def SurvivorSelection():
+    surv = list()
+    Sort()
+    tt = 0
+    n = len(All_Ch) - 1
+    for i in range(100):
+        surv.append[All_Ch[n - i]]
+        tt += Fitness(All_Ch[n - i])
+    All_Ch = surv
+    print(tt / (n + 1))
 
 for i in range(100):
     All_Ch.append(Chromosome(random.randint(0, 64), random.randint(0, 64)))
+
+print('Parent_Selection()')
+print('1> Roulette_Wheel_Selection()')
+print('2> Tournament_Selection()')
+print('3> Rank_based_Selection()')
+
+ch_PS = int(input())
+
+print('Crossover()')
+print('1> One_Point()')
+print('2> N_3_Point()')
+print('3> Uniform()')
+
+ch_PS = int(input())
 
 while 1:
     Parent_Selection()
